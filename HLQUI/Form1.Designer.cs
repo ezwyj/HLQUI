@@ -63,6 +63,13 @@
             // 
             this.comboBoxCOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxCOM.FormattingEnabled = true;
+            this.comboBoxCOM.Items.AddRange(new object[] {
+            "C:\\",
+            "D:\\",
+            "E:\\",
+            "F:\\",
+            "G:\\",
+            "H:\\"});
             this.comboBoxCOM.Location = new System.Drawing.Point(504, 397);
             this.comboBoxCOM.Name = "comboBoxCOM";
             this.comboBoxCOM.Size = new System.Drawing.Size(121, 20);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IniParser;
+using IniParser.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,20 +26,84 @@ namespace HLQUI
             dataGridViewLED.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing; 
             dataGridViewLED.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            
+            dataGridViewLED.MouseWheel += new System.Windows.Forms.MouseEventHandler(dataGridViewLED_MouseWheel);
 
                 
         }
 
+        void dataGridViewLED_MouseWheel(object sender, MouseEventArgs e)
+        {
+           
+                foreach (var row in dataGridViewLED.Rows)
+                {
+                    ((DataGridViewRow)row).Height += e.Delta/10;
+                }
+                foreach (var col in dataGridViewLED.Columns)
+                {
+                    ((DataGridViewColumn)col).Width +=  e.Delta/10;
+                }
+                
+            
+            
+        }
+
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            //打开串口
-            System.IO.Ports.SerialPort port = new System.IO.Ports.SerialPort("COM4");
-            port.Write("WriteClear");
-            port.Write("WriteLine"+ "");
-            port.Write("WriteLine" + "");
+            #region 存SD
 
-            port.Close();
+
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile("cfg.ini");
+            //string startCode = data["line"]["startCode"];
+
+            data["UI"]["line"] = dataGridViewLED.Columns.Count.ToString();
+            parser.WriteFile("cfg.ini", data);
+            
+
+            for (int x=0;x<dataGridViewLED.Columns.Count;x++)
+            {
+                string lineContent = "";
+                for (int y = 0; y < 60; y++)
+                {
+                    Color c = dataGridViewLED.Rows[y].Cells[x].Style.BackColor;
+                    lineContent = lineContent + c.R.ToString("x").PadLeft(2, '0') + c.G.ToString("x").PadLeft(2, '0') + c.B.ToString("x").PadLeft(2, '0');
+                }
+                WriteToFile(comboBoxCOM.Text+"line" + x.ToString()+".txt", lineContent);
+            }
+            #endregion
+
+        }
+        public static void clearTxtFile(string path)
+        {
+
+        }
+
+        public static void WriteToFile(string name, string content)
+        {
+            FileStream fs = null;
+            try
+            {
+                if (File.Exists(name))
+                {
+                    fs = new FileStream(name, FileMode.Append, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+                    sw.WriteLine(content);
+                    sw.Flush();
+                    sw.Close();
+                }
+                else
+                {
+                    File.WriteAllText(name, content, Encoding.UTF8);
+                }
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                }
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
