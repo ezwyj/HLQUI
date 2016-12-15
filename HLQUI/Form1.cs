@@ -28,7 +28,8 @@ namespace HLQUI
 
             dataGridViewLED.MouseWheel += new System.Windows.Forms.MouseEventHandler(dataGridViewLED_MouseWheel);
 
-                
+            comboBoxCOM.Items.Clear();
+            initSD();
         }
 
         void dataGridViewLED_MouseWheel(object sender, MouseEventArgs e)
@@ -43,21 +44,36 @@ namespace HLQUI
                     ((DataGridViewColumn)col).Width +=  e.Delta/10;
                 }
                 
-            
+                
             
         }
-
+        private void initSD()
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            foreach (DriveInfo d in allDrives)
+            {
+                //判断是不是U盘
+                if (d.DriveType == DriveType.Removable)
+                {
+                    comboBoxCOM.Items.Add(d.RootDirectory);
+                }
+            }
+            if (comboBoxCOM.Items.Count > 0)
+            {
+                comboBoxCOM.SelectedIndex = 0;
+            }
+        }
         private void buttonSend_Click(object sender, EventArgs e)
         {
             #region 存SD
 
 
             var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("cfg.ini");
+            IniData data = parser.ReadFile(comboBoxCOM.Text+"cfg.ini");
             //string startCode = data["line"]["startCode"];
 
-            data["UI"]["line"] = dataGridViewLED.Columns.Count.ToString();
-            parser.WriteFile("cfg.ini", data);
+            data["BASIC"]["line"] = dataGridViewLED.Columns.Count.ToString();
+            parser.WriteFile(comboBoxCOM.Text + "cfg.ini", data);
             
 
             for (int x=0;x<dataGridViewLED.Columns.Count;x++)
