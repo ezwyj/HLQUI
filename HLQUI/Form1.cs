@@ -65,6 +65,8 @@ namespace HLQUI
         }
         private void buttonSend_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+           
             #region 存SD
 
 
@@ -72,7 +74,7 @@ namespace HLQUI
             IniData data = parser.ReadFile(comboBoxCOM.Text+"cfg.ini");
             //string startCode = data["line"]["startCode"];
 
-            data["BASIC"]["line"] = dataGridViewLED.Columns.Count.ToString();
+            data["BASIC"]["line"] = (dataGridViewLED.Columns.Count-1).ToString();
             parser.WriteFile(comboBoxCOM.Text + "cfg.ini", data);
             
 
@@ -87,30 +89,22 @@ namespace HLQUI
                 WriteToFile(comboBoxCOM.Text+"line" + x.ToString()+".txt", lineContent);
             }
             #endregion
-
+            this.Cursor = Cursors.Default;
         }
-        public static void clearTxtFile(string path)
-        {
-
-        }
+        
 
         public static void WriteToFile(string name, string content)
         {
             FileStream fs = null;
             try
             {
-                if (File.Exists(name))
-                {
-                    fs = new FileStream(name, FileMode.Append, FileAccess.Write);
-                    StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+                
+                    fs = new FileStream(name, FileMode.Create, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs, Encoding.ASCII);
                     sw.WriteLine(content);
                     sw.Flush();
                     sw.Close();
-                }
-                else
-                {
-                    File.WriteAllText(name, content, Encoding.UTF8);
-                }
+
             }
             finally
             {

@@ -32,7 +32,6 @@
             this.comboBoxCOM = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewLED = new System.Windows.Forms.DataGridView();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -44,14 +43,13 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLED)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSend
             // 
             this.buttonSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSend.Location = new System.Drawing.Point(631, 395);
+            this.buttonSend.Location = new System.Drawing.Point(631, 421);
             this.buttonSend.Name = "buttonSend";
             this.buttonSend.Size = new System.Drawing.Size(75, 23);
             this.buttonSend.TabIndex = 0;
@@ -70,7 +68,7 @@
             "F:\\",
             "G:\\",
             "H:\\"});
-            this.comboBoxCOM.Location = new System.Drawing.Point(504, 397);
+            this.comboBoxCOM.Location = new System.Drawing.Point(504, 423);
             this.comboBoxCOM.Name = "comboBoxCOM";
             this.comboBoxCOM.Size = new System.Drawing.Size(121, 20);
             this.comboBoxCOM.TabIndex = 1;
@@ -81,13 +79,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridViewLED);
-            this.groupBox1.Controls.Add(this.trackBar1);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Location = new System.Drawing.Point(13, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(694, 358);
+            this.groupBox1.Size = new System.Drawing.Size(694, 384);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ShowTime";
@@ -98,28 +95,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewLED.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridViewLED.Location = new System.Drawing.Point(6, 53);
+            this.dataGridViewLED.Location = new System.Drawing.Point(6, 20);
             this.dataGridViewLED.Name = "dataGridViewLED";
             this.dataGridViewLED.RowTemplate.Height = 23;
-            this.dataGridViewLED.Size = new System.Drawing.Size(682, 270);
+            this.dataGridViewLED.Size = new System.Drawing.Size(682, 296);
             this.dataGridViewLED.TabIndex = 0;
             this.dataGridViewLED.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLED_CellClick);
             this.dataGridViewLED.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewLED_CellMouseClick);
             this.dataGridViewLED.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewLED_CellMouseUp);
             this.dataGridViewLED.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewLED_MouseClick);
             // 
-            // trackBar1
-            // 
-            this.trackBar1.Location = new System.Drawing.Point(0, 20);
-            this.trackBar1.Maximum = 120;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(693, 45);
-            this.trackBar1.TabIndex = 7;
-            // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(567, 329);
+            this.button3.Location = new System.Drawing.Point(567, 355);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(79, 23);
             this.button3.TabIndex = 6;
@@ -130,7 +119,7 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(486, 329);
+            this.button2.Location = new System.Drawing.Point(486, 355);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(79, 23);
             this.button2.TabIndex = 5;
@@ -140,7 +129,7 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(405, 329);
+            this.button1.Location = new System.Drawing.Point(405, 355);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 4;
@@ -201,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 426);
+            this.ClientSize = new System.Drawing.Size(712, 452);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBoxCOM);
             this.Controls.Add(this.buttonSend);
@@ -210,9 +199,7 @@
             this.Name = "Form1";
             this.Text = "Design";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLED)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -229,7 +216,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridViewLED;
-        private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
