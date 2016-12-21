@@ -76,6 +76,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="DAT\LED.ldt" />
+    <None Include="DAT\LED.ldt.ldt" />
+    <None Include="DAT\LED2.ldt" />
+    <None Include="DAT\LED2.ldt.ldt" />
+    <None Include="DAT\LED3.ldt" />
+    <None Include="DAT\LEDa.ldt" />
+    <None Include="DAT\LEDa.ldt.ldt" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
