@@ -91,8 +91,26 @@ namespace HLQUI
             #endregion
             this.Cursor = Cursors.Default;
         }
-        
+        private int startLed = 0;
+        private void showModelGrid()
+        {
+            //计算可显示格式大小
+            int height = dataGridViewLED.Rows[0].Height;
+            int width = dataGridViewLED.Columns[0].Width;
 
+            int xCount = dataGridViewLED.Width / width;
+            int yCount = dataGridViewLED.Height / height;
+
+            int maxShowLed = xCount * yCount;
+
+            for (int i=0; i < maxShowLed; i++)
+            {
+                dataGridViewLED.
+            }
+
+            
+            //取当前格式
+        }
         public static void WriteToFile(string name, string content)
         {
             FileStream fs = null;

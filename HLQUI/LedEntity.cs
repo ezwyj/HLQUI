@@ -15,5 +15,9 @@ namespace HLQUI
         public int Green { get; set; }
 
         public int Blue { get; set; }
+
+        
     }
+
+    
 }
